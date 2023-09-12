@@ -9,8 +9,7 @@ if Path(pagesDir).is_dir():
     shutil.rmtree(pagesDir)
 shutil.copytree(f'.publish/docs', f'{pagesDir}')
 
-dirsToCopy = ['00 Meta', '10 Example Data',
-              '20 Dataview Queries', '30 Dataview Resources']
+dirsToCopy = ['00 Meta', '10 Example Data', '20 Dataview Queries', '30 Dataview Resources']
 
 for dir in dirsToCopy:
     shutil.copytree(f'{dir}', f'{pagesDir}/{dir}')
