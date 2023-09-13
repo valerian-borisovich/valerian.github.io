@@ -1,0 +1,4 @@
+{
+    "github-actions.remote-name": "main",
+    "github-actions.workflows.pinned.refresh.enabled": true,
+}
