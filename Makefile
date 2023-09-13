@@ -23,6 +23,11 @@ help: ## Show this help
 	@printf "\033[33m%s:\033[0m\n" 'Available commands'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[32m%-14s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+net: ### sudo netstat -ntlp ; sudo ss -tulpn | grep :9000
+	netstat -ntlp
+	ss -tulpn | grep :9000
+
+
 build: ### Build docker compose file in this directory
 	@if [ ! -f "compose.yml" ]; then COMPOSE_FILE="docker-compose.yml"; fi
 #	@if [ ! -d $(APP_BASE_DIR) ]; then @mkdir $(APP_BASE_DIR); fi
@@ -43,39 +48,23 @@ start: ### Start project
 	npm run start
 
 r: ### run
-	cd users-application
 	npm run start
-	cd ..
-	cd posts-application
-	npm run start
-	cd ..
-	cd exchanges-application
-	npm run start
-	cd ..
-	cd gateway
-	npm run start
-	cd ..
-	echo -e "Access the graph You can reach the gateway under http://localhost:3001/graphql"
 
 clean:
-	rm -rf ./users-application/dist
-	rm -rf ./users-application/node_modules
-	rm -rf ./posts-application/dist
-	rm -rf ./posts-application/node_modules
-	rm -rf ./exchanges-application/dist
-	rm -rf ./exchanges-application/node_modules
-	rm -rf ./gateway/dist
-	rm -rf ./gateway/node_modules
+	rm -rf ./dist
+	rm -rf ./node_modules
 
 dev: ### Run devel project
 	npm run dev
 
-net: ### sudo netstat -ntlp ; sudo ss -tulpn | grep :9000
-	netstat -ntlp
-	ss -tulpn | grep :9000
-
 #if grep -q "${search_word}" <<< "$my_quote" then
 b: ### Run build:
+	@$(MAKE) -s clean
+	npm run clear
+	npm i --save-dev
+	npm audit fix --force
+	npm run build
+
 ifneq (,$(findstring backend-prisma,$(filter-out $@,$(MAKECMDGOALS))))
 ifneq (,$(findstring backend,$(filter-out $@,$(MAKECMDGOALS))))
 else

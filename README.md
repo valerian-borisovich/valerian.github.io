@@ -1,46 +1,87 @@
-# Obsidian Example Vault for Dataview Queries
+# Metadata Menu
+This plugin is made for data quality enthusiasts: access and manage the metadata of your notes in Obsidian.
 
-Good day!
+Metadata Menu adds context menu items to modifiy target note's frontmatter fields and "inline fields" (dataview syntax) by right-clicking on the link, or within dataview tables
 
-This example vault showcases different usages of the [Dataview](https://blacksmithgu.github.io/obsidian-dataview/) plugin for [Obsidian.md](https://obsidian.md/). You'll find everything from more basic syntactical examples to complex javascript supported solutions to help you build your own dataview querys that are tailor-made for your needs and data.
+You can define preset types and values for those fields globally in the plugin's settings or on a file-by-file basis thanks to fileClass definition
 
-We hope you enjoy!
+It also enables frontmatter of inline-field autocompletion with suggested values based on preset values.
 
-### **For the optimal experience, open this vault in Obsidian!**
+For complete documentation : https://mdelobelle.github.io/metadatamenu
 
-1. Download the vault [here](https://github.com/s-blu/obsidian_dataview_example_vault/archive/refs/heads/master.zip)
-2. Open the vault in Obsidian via "Open another vault -> Open folder as vault"
-3. Trust us. :) 
-4. When Obsidian opens the settings, hit the switch on "Dataview" to enable the plugin
-5. Done! The example vault is now available to you in its purest and most useful form!
+[demo 1](https://youtu.be/7bvIAkJf0OE) : basic features, settings and field types
 
-> [!info] Choose correct vault root
-> Be sure to choose the folder that directly contains `00 Meta`, `10 Example Data` etc as a vault. These folders should be the most top folder level when viewing the vault in Obsidian, otherwise queries won't find their data.
+[demo 2](https://youtu.be/gU-StGyDciY ): autocompletion and "in sentence" fields commands
 
-Wonder where to start? Good starting points are our [[Use Case Overview]], the [[Dataview Queries Overview]] or the [[Topic Overview]]. You can, of course, add and edit files to your liking to try things out!
+[demo 3](https://youtu.be/sYudigxPEnY): File type fields
 
-**Are you new to dataview?** Have a look at [[Learn the Basics]]!
+[demo 4](https://youtu.be/PrbYaVh7N7g): Date type fields
 
-> [!hint] Community effort
-> This vault is a project that lives through the community. Please feel encouraged helping us building it to a useful resource! Find out more under [[Contribution]]
+[demo 5](https://youtu.be/Mq2tbA0RVM8): Templates for Input type fields:
 
-## Online Version
+[demo 6](https://youtu.be/QxXSuh7HUZY): FileClass
 
-While I heartly recommend to download the vault, if you only want to browse through it or want to link a query to someone, the vault is deployed as a mkdocs page:
+[demo 7](https://youtu.be/6dEk9no269g): Time shifting for spaced repetition or date postponing
 
-[**Online Version of the Obsidian Example Vault**](https://s-blu.github.io/obsidian_dataview_example_vault/)
+[demo 8](https://youtu.be/ad0nJf8TZP8): Lookup fields
 
-To see the results of the queries, you need to download the vault. 
+[demo 9](https://youtu.be/zUcZWG7nWF4): Lookup fields as bullet list
 
-## Documentation & FAQ
+[demo 10](https://youtu.be/vc55ivQuHuY): Better Select and File fields
 
-You need more details on how dataview works exactly? Head over to the [official documentation.](https://blacksmithgu.github.io/obsidian-dataview/)
-Also, we collected some more [[Dataview Documentation and Resources|Resources]], as well as some [[Tips, tricks and interesting facts]]!
+[demo 11](https://youtu.be/I73uW8fqOZ8): Supercharged Tags, multi fileClasses and metadata button
 
-You have some sort of question? Refer to the [[FAQ]].
+[demo 12](https://youtu.be/3jukvV7OODg): Fileclass View
 
-## Contributing
+[demo 13](https://youtu.be/7oaau8ijVUA): Canvas fields
 
-If you found an issue or want to add a query you think could be helpful for others, be very welcome to get involved! You want to help, but don't know what to do? Have a look at the [[Vault To Do]].
+[demo 14](https://youtu.be/G47AYkmoKJs): Create a Kanban board with Canvas Group fields
 
-Read more about how to contribute under [[00 Meta/Vault Infos/Contribution]].
+# General concepts
+
+Metadata Menu can manage any metadata field located in frontmatter (YAML syntax) or in the body of the note with the syntax `field::` (dataview style)
+
+## Field Types
+Metadata Menu gives a type to each field.
+Available types are:
+- `Input` (free text) : this is the default type applied to each field if nothing is set for this field (see #Field settings). it will `Accept any value`
+- `Boolean`: a field that can `Accept true or false` or null value
+- `Number`: a field that can `Accept a number` (float) value, optionaly within a range (`min`, `max`) and can be in/decremented by a `step` value (default 1) 
+- `Select`: a field that can `Accept a single value from a list`
+- `Multi`: a field that can `Accept multiple values from a list`
+- `Cycle`: a field that will `Cycle through values from a list`
+- `File`: a field that will `Accept a link to a file from your vault`
+- `MultiFile`: a field that will `Accept multiple links`
+- `Date`: a field that will `Accept a date`
+- `Lookup`: a field that will `Accept a lookup query`
+- `Canvas`: a field that will `Update with links in a canvas`
+- `Canvas Group`: a field that will `Update with groups in a canvas`
+- `Canvas Group Link`: a field that will `Update with groups links in a canvas`
+
+## Field settings
+By default each field is an `Input`
+
+You can define a `field setting` for each field.
+
+A field setting is composed of:
+- a name
+- a type (see ## Field Types list above)
+- options depending on the type
+
+A field setting can defined in:
+- Metadata Menu settings (see # Metadata Menu Settings)
+- in a fileClass note (see # Fileclass)
+
+> NB: if a field has a setting defined in the Metadata Menu settings AND in a fileClass note, the setting of the fileClass will take the priority over the setting defined in Metadata Menu settings
+
+## Controls
+a Field can be modified or added from several locations:
+- autocompletion within the editor mode
+- Obsidian and plugins menus : file explorer, note, calendar, context menu of a link, many other plugins not fully tested ...
+- dataview table if you have dataview plugin installed
+
+# Roadmap
+- [ ] manage indented lists multi-values frontmatter field
+
+# Know Issue
+- autocomplete conflicts with Various Complements plugin
