@@ -26,9 +26,16 @@ markdown_extensions:
 
 extra_javascript:
   - extras/matomo.js
+  - dataview_views/tagcloud/view.js
+  - dataview_views/imagegrid/view.js
+  - dataview_views/usedInAUseCase/view.js
+  - dataview_views/year_overview/view.js
 
 extra_css:
   - extras/styles.css
+  - dataview_views/tagcloud/view.css
+  - dataview_views/imagegrid/view.css
+  - dataview_views/year_overview/view.css
 
 plugins:
   - search
@@ -39,3 +46,6 @@ plugins:
 nav:
   - Home: index.md
   - About: about.md
+  - Overview: Overview.md
+  - DataviewQueries: DataviewQueries.md
+  - DVJSfunction: DVJSfunction.md

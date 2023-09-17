@@ -32,7 +32,7 @@
 
 ```dataview
 TABLE WITHOUT ID key AS "unresolved link", rows.file.link AS "referencing file"
-FROM "20 Dataview Queries" OR "30 Dataview Resources"
+FROM "DataviewQueries" OR "DataviewResources"
 FLATTEN file.outlinks as outlinks
 WHERE !(outlinks.file) AND !(contains(meta(outlinks).path, "/"))
 GROUP BY outlinks

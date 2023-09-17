@@ -34,15 +34,8 @@ build: ### Build docker compose file in this directory
 	DOCKER_BUILDKIT=1 docker-compose -f $(COMPOSE_FILE) up -d --build $(c)
 #	docker-compose -f $(COMPOSE_FILE) build $(c)
 
-setup: ### Setup project
-	@cd ./backend
-	npm install graphql ccxt graphql-ccxt --force && npm install && npm audit fix --force
-	@$(MAKE) -s start
-	@cd ..
-	@cd ./backend-prisma
-	npm i --save-dev prisma@latest && npm i @prisma/client@latest
-	npm run build
-	@cd ..
+setup: ### Setup
+
 
 start: ### Start project
 	npm run start
@@ -53,6 +46,9 @@ r: ### run
 clean:
 	rm -rf ./dist
 	rm -rf ./node_modules
+
+deploy:
+	mkdocs gh-deploy --strict --force
 
 dev: ### Run devel project
 	npm run dev
@@ -65,32 +61,10 @@ b: ### Run build:
 	npm audit fix --force
 	npm run build
 
-ifneq (,$(findstring backend-prisma,$(filter-out $@,$(MAKECMDGOALS))))
-ifneq (,$(findstring backend,$(filter-out $@,$(MAKECMDGOALS))))
-else
-	@cd ./backend
-	npm install graphql ccxt graphql-ccxt --force && npm install && npm audit fix --force
-	npm i
-	npm run build
-	@cd ..
-endif
-else
-	@cd ./backend-prisma
-	npm i --save-dev prisma@latest && npm i @prisma/client@latest
-	npm run build
-	@cd ..
-endif
-ifneq (,$(findstring frontend-quasar,$(filter-out $@,$(MAKECMDGOALS))))
-ifneq (,$(findstring frontend,$(filter-out $@,$(MAKECMDGOALS))))
-else
-	@cd ./frontend
-	npm i
-	npm run build
-	@cd ..
-endif
-else
-	@cd ./frontend-quasar
-	npm i
-	npm run build
-	@cd ..
-endif
+# ###   "Hugo Quickstart"   "https://michaelcurrin.github.io/hugo-quickstart"
+#
+hugo-build:
+	hugo --gc --minify
+
+hs hugo-serve:
+	hugo server

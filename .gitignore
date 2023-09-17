@@ -5,3 +5,9 @@ venv
 
 site/
 pages/
+
+.hugo_build.lock
+
+public/
+
+resources/
