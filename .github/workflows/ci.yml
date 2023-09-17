@@ -18,5 +18,5 @@ jobs:
           python-version: 3.x
       - run: |
           pip install mkdocs-material mkdocs-redirects
-          cd ./.publish
+          # cd ./.publish
           mkdocs gh-deploy --force
