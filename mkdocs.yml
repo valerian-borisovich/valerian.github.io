@@ -61,5 +61,5 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks
-  - tags:
-      tags_file: tagindex.md
+  #- tags:
+  #    tags_file: tagindex.md
