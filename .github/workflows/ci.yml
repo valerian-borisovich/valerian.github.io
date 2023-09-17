@@ -17,6 +17,6 @@ jobs:
         with:
           python-version: 3.x
       - run: |
-          pip install mkdocs-material mkdocs-redirects
-          # cd ./.publish
+          pip install mkdocs-material mkdocs-roamlinks-plugin mkdocs-redirects
           mkdocs gh-deploy --force
+          # cd ./.publish
