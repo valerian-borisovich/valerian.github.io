@@ -1,6 +1,6 @@
 site_name: Valerian Borisovich
 edit_uri: tree/master/
-docs_dir: pages
+#docs_dir: pages
 
 theme:
   name: material
