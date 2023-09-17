@@ -5,17 +5,26 @@ on:
     branches:
       - main
 
+env:
+  PYTHON_VERSION: 3.x
+
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - run: python -m pip install --upgrade pip
-      - run: pip install mkdocs-material mkdocs-redirects
-      - run: pip install mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
-      - run: |
-            cd ./.publish 
-            mkdocs gh-deploy --force
+      - name: Install Python dependencies
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material mkdocs-redirects mkdocs-roamlinks-plugin
+          #- run: pip install mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
+          cd ./.publish 
+          mkdocs gh-deploy --force
