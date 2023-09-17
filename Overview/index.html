@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../about/">
+      
+      
+        <link rel="next" href="../DataviewQueries/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Tag Index - Valerian Borisovich Vault</title>
+        <title>Overview - Valerian Borisovich Vault</title>
       
     
     
@@ -75,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tag-index" class="md-skip">
+        <a href="#topic-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tag Index
+              Overview
             
           </span>
         </div>
@@ -260,9 +264,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Overview/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -271,6 +295,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topic-list" class="md-nav__link">
+    Topic List
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -333,6 +384,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topic-list" class="md-nav__link">
+    Topic List
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -349,10 +415,23 @@
   
 
 
-<h1 id="tag-index">Tag Index<a class="headerlink" href="#tag-index" title="Permanent link">&para;</a></h1>
-<p>You're currently viewing the <strong>Online Version</strong> of the Obsidian Example Vault. This comes with some limitations, first and foremost: Queries do not execute. Due to that, the Query Overviews are unusable, since they are using dataview themselves.</p>
-<p>For a better user experience, it's recommended to <a href="../">open the vault in Obsidian</a>.</p>
-<p>To navigate the online version you can either use the <strong>search bar</strong> at the top or browse through the page tags:</p>
+<h1 id="topic-overview">Topic Overview<a class="headerlink" href="#topic-overview" title="Permanent link">&para;</a></h1>
+<p>Each query has one or more <strong>topics</strong>, grouping queries with similar goals together. Wonder what's available? Wonder no more!</p>
+<pre><code class="language-dataviewjs">await dv.view(&quot;dataview_views/tagcloud&quot;, {values: dv.pages('&quot;DataviewQueries&quot;').where(p =&gt; p.topics).topics})
+</code></pre>
+<h2 id="topic-list">Topic List<a class="headerlink" href="#topic-list" title="Permanent link">&para;</a></h2>
+<pre><code class="language-dataview">TABLE WITHOUT ID t as &quot;Topic&quot;, count, rows.file.link AS &quot;pages&quot;
+FROM &quot;DataviewQueries&quot;
+WHERE topics
+FLATTEN topics AS t
+GROUP BY t
+FLATTEN length(rows.file.link) as count
+SORT count DESC, t ASC
+</code></pre>
+<blockquote>
+<p>[!info] Used queries<br />
+You want these fancy queries for your own data? Find the [[Display meta data values as a tag cloud|tag cloud here]] and [[List pages that share a meta data value with the current page|the list here]].</p>
+</blockquote>
 
 
 

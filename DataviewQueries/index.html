@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../Overview/">
+      
+      
+        <link rel="next" href="../DVJSfunction/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Tag Index - Valerian Borisovich Vault</title>
+        <title>DataviewQueries - Valerian Borisovich Vault</title>
       
     
     
@@ -75,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tag-index" class="md-skip">
+        <a href="#dataview-queries-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tag Index
+              DataviewQueries
             
           </span>
         </div>
@@ -279,9 +283,18 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../DataviewQueries/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -290,6 +303,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -349,10 +363,24 @@
   
 
 
-<h1 id="tag-index">Tag Index<a class="headerlink" href="#tag-index" title="Permanent link">&para;</a></h1>
-<p>You're currently viewing the <strong>Online Version</strong> of the Obsidian Example Vault. This comes with some limitations, first and foremost: Queries do not execute. Due to that, the Query Overviews are unusable, since they are using dataview themselves.</p>
-<p>For a better user experience, it's recommended to <a href="../">open the vault in Obsidian</a>.</p>
-<p>To navigate the online version you can either use the <strong>search bar</strong> at the top or browse through the page tags:</p>
+<h1 id="dataview-queries-overview">Dataview Queries Overview<a class="headerlink" href="#dataview-queries-overview" title="Permanent link">&para;</a></h1>
+<p>The [[Topic Overview]]  has all the topics this vault covers. </p>
+<p>Additionally, you can browse...</p>
+<ul>
+<li>[[Queries by Type]]</li>
+<li>[[Queries by Data Command]]</li>
+<li>[[Queries by DQL function]]</li>
+<li>[[Queries by DVJS function]]</li>
+</ul>
+<p>... or write your own query to find queries! Each query is annotated with "dv" tags (dvjs for javascript functions) have a look at the tag pane. You can query them with ease by doing something like</p>
+<pre><code>TABLE description
+FROM &quot;DataviewQueries&quot; AND #dv/flatten AND #dv/list
+</code></pre>
+<p>or</p>
+<pre><code>TABLE description
+FROM &quot;DataviewQueries&quot; AND #dvjs/map AND #dvjs/el
+</code></pre>
+<p>Go ahead! Put your query for queries right here!</p>
 
 
 

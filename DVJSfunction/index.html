@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../DataviewQueries/">
+      
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Tag Index - Valerian Borisovich Vault</title>
+        <title>DVJSfunction - Valerian Borisovich Vault</title>
       
     
     
@@ -75,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tag-index" class="md-skip">
+        <a href="#queries-by-dvjs-function" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tag Index
+              DVJSfunction
             
           </span>
         </div>
@@ -298,9 +300,18 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../DVJSfunction/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -309,6 +320,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -349,10 +361,16 @@
   
 
 
-<h1 id="tag-index">Tag Index<a class="headerlink" href="#tag-index" title="Permanent link">&para;</a></h1>
-<p>You're currently viewing the <strong>Online Version</strong> of the Obsidian Example Vault. This comes with some limitations, first and foremost: Queries do not execute. Due to that, the Query Overviews are unusable, since they are using dataview themselves.</p>
-<p>For a better user experience, it's recommended to <a href="../">open the vault in Obsidian</a>.</p>
-<p>To navigate the online version you can either use the <strong>search bar</strong> at the top or browse through the page tags:</p>
+<h1 id="queries-by-dvjs-function">Queries by DVJS function<a class="headerlink" href="#queries-by-dvjs-function" title="Permanent link">&para;</a></h1>
+<pre><code class="language-dataviewjs">const tagsToDisplay = [&quot;current&quot;, &quot;pages&quot;, &quot;pagePaths&quot;, &quot;page&quot;, &quot;el&quot;, &quot;header&quot;, &quot;paragraph&quot;, &quot;span&quot;, &quot;execute&quot;, &quot;executeJs&quot;, &quot;view&quot;, &quot;list&quot;, &quot;taskList&quot;, &quot;table&quot;, &quot;markdownTable&quot;, &quot;markdownList&quot;, &quot;markdownTaskList&quot;, &quot;isArray&quot;, &quot;fileLink&quot;, &quot;sectionLink&quot;, &quot;blockLink&quot;, &quot;date&quot;, &quot;duration&quot;, &quot;compare&quot;, &quot;equal&quot;, &quot;clone&quot;, &quot;parse&quot;, &quot;csv&quot;, &quot;load&quot;, &quot;normalize&quot;, &quot;query&quot;, &quot;tryQuery&quot;, &quot;queryMarkdown&quot;, &quot;tryQueryMarkdown&quot;, &quot;tryEvaluate&quot;, &quot;evaluate&quot;,&quot;length&quot;, &quot;where&quot;, &quot;filter&quot;, &quot;map&quot;, &quot;flatMap&quot;, &quot;mutate&quot;, &quot;limit&quot;, &quot;slice&quot;, &quot;concat&quot;, &quot;indexOf&quot;, &quot;find&quot;, &quot;findIndex&quot;, &quot;includes&quot;, &quot;join&quot;, &quot;sort&quot;, &quot;groupBy&quot;, &quot;distinct&quot;, &quot;every&quot;, &quot;some&quot;, &quot;none&quot;, &quot;first&quot;, &quot;last&quot;, &quot;to&quot;, &quot;expand&quot;, &quot;forEach&quot;, &quot;array&quot;]
+
+tagsToDisplay.sort()
+
+for (let tag of tagsToDisplay) {
+    dv.header(2, tag)
+    dv.table([&quot;File&quot;, &quot;Description&quot;], dv.pages('&quot;DataviewQueries&quot; AND #dvjs/' + tag).map(p =&gt; [p.file.link, p.description]))
+}
+</code></pre>
 
 
 
