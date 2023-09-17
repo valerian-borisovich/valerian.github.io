@@ -1,58 +1,57 @@
 name: ci
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 env:
-    PYTHON_VERSION: 3.x
+  PYTHON_VERSION: 3.x
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
 
-            -   name: Checkout repository
-                uses: actions/checkout@v3
-                with:
-                    fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-            -   name: Set up Python runtime
-                uses: actions/setup-python@v4
-                with:
-                    python-version:
-                        ${{ env.PYTHON_VERSION }}
+      - name: Set up Python runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-            -   name: Install Python dependencies
-                env:
-                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-                run: |
-                    python -m pip install --upgrade pip
-                    pip install mkdocs-material mkdocs-redirects mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
-                    #pip install mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
+      - name: Install Python dependencies
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material mkdocs-redirects mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
+          # pip install mkdocs-roamlinks-plugin mkdocs-gitbook mkdocs-github
 
-            -   name: Deploy documentation
-                env:
-                    GH_TOKEN:
-                        ${{ secrets.GH_TOKEN }}
-                run: |
-                    cd ./.publish
-                    mkdocs gh-deploy --strict --force
+      - name: Deploy documentation
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          cd ./.publish
+          mkdocs gh-deploy  --force
+          # mkdocs gh-deploy --strict --force
 
-            #-   name: Deploy to GH Pages
-            #    uses: mhausenblas/mkdocs-deploy-gh-pages@master
-            #    env:
-            #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #-   name: Deploy to GH Pages
+          #    uses: mhausenblas/mkdocs-deploy-gh-pages@master
+          #    env:
+          #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            -   name: Link Checker
-                id: lc
-                uses: peter-evans/link-checker@v1
-                with:
-                    args: -d ./site -r ./site -x man7.org
+      - name: Link Checker
+        id: lc
+        uses: peter-evans/link-checker@v1
+        with:
+          args: -d ./site -r ./site -x man7.org
 
-            -   name: Fail on errors
-                run: exit $
+      - name: Fail on errors
+        run: exit $
