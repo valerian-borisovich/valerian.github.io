@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-
+  release:
+    types:
+      - published
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,5 +16,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+      - run: |
+          pip install mkdocs-material mkdocs-redirects
+          cd ./.publish
+          mkdocs gh-deploy --force
