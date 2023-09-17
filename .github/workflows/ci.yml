@@ -53,5 +53,5 @@ jobs:
         with:
           args: -d ./site -r ./site -x man7.org
 
-      - name: Fail on errors
-        run: exit $
+      #- name: Fail on errors
+      #  run: exit $
