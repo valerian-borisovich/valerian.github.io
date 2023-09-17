@@ -1,13 +1,13 @@
-.vscode
-.idea
+**/.vscode/
+**/.idea/
 
-venv
+**/venv/
 
-site/
-pages/
+**/site/
+**/pages/
 
 .hugo_build.lock
 
-public/
+**/public/
 
-resources/
+# **/resources/

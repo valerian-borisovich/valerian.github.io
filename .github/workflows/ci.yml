@@ -39,7 +39,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd ./.publish
-          mkdocs gh-deploy  --force
+          mkdocs gh-deploy --force
           # mkdocs gh-deploy --strict --force
 
           #-   name: Deploy to GH Pages
