@@ -1,6 +1,7 @@
 site_name: Valerian Borisovich Vault
 repo_url: https://github.com/valerian-borisovich/valerian-borisovich.github.io
-edit_uri: tree/master/
+edit_uri: tree/main/.publish/docs/
+#edit_uri: tree/master/
 # docs_dir: pages
 
 theme:
@@ -14,14 +15,14 @@ theme:
   favicon: assets/logo.png
   features:
     - navigation.instant
-  
+
 markdown_extensions:
-    - toc:
-         permalink: True
-    - fenced_code
-    - tables
-    - admonition
-    - nl2br
+  - toc:
+      permalink: True
+  - fenced_code
+  - tables
+  - admonition
+  - nl2br
 
 extra_javascript:
   - extras/matomo.js
@@ -34,3 +35,7 @@ plugins:
   - roamlinks
   - tags:
       tags_file: tagindex.md
+
+nav:
+  - Home: index.md
+  - About: about.md

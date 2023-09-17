@@ -2,3 +2,6 @@
 .idea
 
 venv
+
+site/
+pages/
